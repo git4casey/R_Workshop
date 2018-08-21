@@ -1,2 +1,2 @@
-# R_Workshop
-r_workshop r files and data
+# R Workshop
+Including slides, .R files and data needed for the workshop.
