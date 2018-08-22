@@ -71,3 +71,47 @@ betas <- rep(0,ncol(edhec))
 library(tseries)
 GSPC <- get.hist.quote("^GSPC","2007-12-31","2014-12-31",quote = "Close",
                         provider="yahoo",retclass="zoo")
+
+
+# test Garch model
+library(tseries)
+garchFit <- garch(ts.ret.log[,1], trace = FALSE)
+coef(garchFit)
+
+# load stock data
+stk_data <- read.csv(file = "data/stock_data.csv",
+                     stringsAsFactors = FALSE)
+
+stk_data_xts <- xts(stk_data[,-1], as.Date(stk_data[,1],
+                                           format = "%Y-%m-%d"))
+plot.zoo(stk_data_xts, type = "l", col = 1:5)
+
+# objects
+die <- c(1:6)
+text <- c("R", "Workshop")
+logicals <- c(TRUE, FALSE,FALSE)
+
+mtx <- matrix(die, nrow = 2)
+ary <- array(mtx, dim=c(2,3,3))
+
+list <- list(die, mtx, ary)
+
+df <- data.frame(face = c("ace","king","queen"),
+                 suit = c("heart","spades","diamonds"),
+                 value = c(1,13,12))
+
+allB <- c("B","BB","BB")
+barCase1 <- c("B","BB","BB")
+barCase2 <- c("DD","0","B")
+
+n <- 1000
+myPrizeHist <- vector()
+for(i in 1:n){
+  myPrizeHist[i] <- play()
+}
+
+# load tidyverse
+library(tidyverse)
+library(dplyr)
+
+load("data_df.RData")
